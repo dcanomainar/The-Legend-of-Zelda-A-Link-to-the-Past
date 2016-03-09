@@ -1,0 +1,236 @@
+
+zelda.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+zelda_dead
+  rotate: false
+  xy: 1, 9
+  size: 24, 22
+  orig: 24, 22
+  offset: 0, 0
+  index: 2
+zelda_left
+  rotate: false
+  xy: 27, 7
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: 3
+zelda_left
+  rotate: false
+  xy: 48, 7
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: 5
+zelda_left
+  rotate: false
+  xy: 69, 7
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: 7
+zelda_right
+  rotate: false
+  xy: 90, 7
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: 3
+zelda_right
+  rotate: false
+  xy: 111, 7
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: 5
+zelda_left
+  rotate: false
+  xy: 132, 7
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 1
+zelda_left
+  rotate: false
+  xy: 152, 7
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 2
+zelda_left
+  rotate: false
+  xy: 172, 8
+  size: 19, 23
+  orig: 19, 23
+  offset: 0, 0
+  index: 4
+zelda_right
+  rotate: false
+  xy: 193, 8
+  size: 19, 23
+  orig: 19, 23
+  offset: 0, 0
+  index: 4
+zelda_right
+  rotate: false
+  xy: 214, 8
+  size: 19, 23
+  orig: 19, 23
+  offset: 0, 0
+  index: 7
+zelda_left
+  rotate: false
+  xy: 235, 7
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 6
+zelda_right
+  rotate: false
+  xy: 255, 7
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 1
+zelda_right
+  rotate: false
+  xy: 275, 7
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 2
+zelda_right
+  rotate: false
+  xy: 295, 7
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 6
+zelda_up
+  rotate: false
+  xy: 315, 7
+  size: 17, 24
+  orig: 17, 24
+  offset: 0, 0
+  index: 1
+zelda_up_1_no_landscape
+  rotate: false
+  xy: 334, 7
+  size: 17, 24
+  orig: 17, 24
+  offset: 0, 0
+  index: -1
+zelda_up
+  rotate: false
+  xy: 353, 7
+  size: 17, 24
+  orig: 17, 24
+  offset: 0, 0
+  index: 7
+zelda_down
+  rotate: false
+  xy: 372, 7
+  size: 16, 24
+  orig: 16, 24
+  offset: 0, 0
+  index: 1
+zelda_down
+  rotate: false
+  xy: 390, 7
+  size: 16, 24
+  orig: 16, 24
+  offset: 0, 0
+  index: 7
+zelda_up
+  rotate: false
+  xy: 408, 8
+  size: 17, 23
+  orig: 17, 23
+  offset: 0, 0
+  index: 2
+zelda_up
+  rotate: false
+  xy: 427, 8
+  size: 17, 23
+  orig: 17, 23
+  offset: 0, 0
+  index: 6
+zelda_dead
+  rotate: false
+  xy: 446, 10
+  size: 18, 21
+  orig: 18, 21
+  offset: 0, 0
+  index: 1
+zelda_dead
+  rotate: false
+  xy: 466, 16
+  size: 24, 15
+  orig: 24, 15
+  offset: 0, 0
+  index: 3
+heart
+  rotate: false
+  xy: 466, 1
+  size: 14, 13
+  orig: 14, 13
+  offset: 0, 0
+  index: -1
+zelda_up
+  rotate: false
+  xy: 492, 9
+  size: 17, 22
+  orig: 17, 22
+  offset: 0, 0
+  index: 3
+zelda_up
+  rotate: false
+  xy: 511, 9
+  size: 17, 22
+  orig: 17, 22
+  offset: 0, 0
+  index: 4
+zelda_up
+  rotate: false
+  xy: 530, 9
+  size: 17, 22
+  orig: 17, 22
+  offset: 0, 0
+  index: 5
+zelda_down
+  rotate: false
+  xy: 549, 8
+  size: 16, 23
+  orig: 16, 23
+  offset: 0, 0
+  index: 2
+zelda_down
+  rotate: false
+  xy: 567, 8
+  size: 16, 23
+  orig: 16, 23
+  offset: 0, 0
+  index: 6
+zelda_down
+  rotate: false
+  xy: 585, 9
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: 3
+zelda_down
+  rotate: false
+  xy: 585, 9
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: 5
+zelda_down
+  rotate: false
+  xy: 603, 9
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: 4

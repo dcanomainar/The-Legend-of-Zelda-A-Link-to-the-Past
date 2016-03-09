@@ -1,0 +1,96 @@
+
+blueEnemy.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+enemy1_left
+  rotate: false
+  xy: 1, 35
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: 1
+enemy1_right
+  rotate: false
+  xy: 1, 5
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: 1
+enemy1_left
+  rotate: false
+  xy: 35, 35
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: 2
+enemy1_right
+  rotate: false
+  xy: 35, 5
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: 2
+enemy1_down
+  rotate: false
+  xy: 68, 25
+  size: 22, 38
+  orig: 22, 38
+  offset: 0, 0
+  index: 4
+enemy1_left
+  rotate: false
+  xy: 92, 36
+  size: 31, 27
+  orig: 31, 27
+  offset: 0, 0
+  index: 3
+enemy1_right
+  rotate: false
+  xy: 92, 7
+  size: 31, 27
+  orig: 31, 27
+  offset: 0, 0
+  index: 3
+enemy1_down
+  rotate: false
+  xy: 125, 29
+  size: 22, 34
+  orig: 22, 34
+  offset: 0, 0
+  index: 2
+enemy1_up
+  rotate: false
+  xy: 125, 1
+  size: 22, 26
+  orig: 22, 26
+  offset: 0, 0
+  index: 1
+enemy1_down
+  rotate: false
+  xy: 149, 29
+  size: 22, 34
+  orig: 22, 34
+  offset: 0, 0
+  index: 3
+enemy1_up
+  rotate: false
+  xy: 149, 1
+  size: 22, 26
+  orig: 22, 26
+  offset: 0, 0
+  index: 2
+enemy1_down
+  rotate: false
+  xy: 173, 30
+  size: 22, 33
+  orig: 22, 33
+  offset: 0, 0
+  index: 1
+enemy1_up
+  rotate: false
+  xy: 173, 1
+  size: 22, 27
+  orig: 22, 27
+  offset: 0, 0
+  index: 3

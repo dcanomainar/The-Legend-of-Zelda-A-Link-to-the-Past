@@ -2,11 +2,16 @@ package com.dani.zelda.util;
 
 public class Constants
 {
+    public static final String APP = "Zelda";
+
     public static final int SCREEN_WIDTH = 800;
     public static final int SCREEN_HEIGHT = 600;
 
     public static final int TILE_WIDTH = 16;
     public static final int TILE_HEIGHT = 16;
+
+    public static final int CAMERA_WIDTH = 10 * TILE_WIDTH;
+    public static final int CAMERA_HEIGHT = 100 * TILE_WIDTH;
 
     public static final int HUD_WIDHT = 400;
     public static final int HUD_HEIGHT = 208;

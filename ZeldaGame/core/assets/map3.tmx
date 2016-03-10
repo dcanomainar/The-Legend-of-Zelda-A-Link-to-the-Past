@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="63" tilewidth="16" tileheight="16" nextobjectid="259">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="63" tilewidth="16" tileheight="16" nextobjectid="319">
  <tileset firstgid="1" name="7634" tilewidth="16" tileheight="16" tilecount="4536" columns="72">
   <image source="resources/tiles/7634.png" width="1162" height="1023"/>
+ </tileset>
+ <tileset firstgid="4537" name="enemy1_down_1" tilewidth="22" tileheight="33" tilecount="1" columns="1">
+  <image source="enemy1_down_1.png" width="22" height="33"/>
+ </tileset>
+ <tileset firstgid="4538" name="enemy2_down_1" tilewidth="25" tileheight="30" tilecount="1" columns="1">
+  <image source="enemy2_down_1.png" width="25" height="30"/>
+ </tileset>
+ <tileset firstgid="4539" name="enemy3_down_1" tilewidth="22" tileheight="34" tilecount="1" columns="1">
+  <image source="enemy3_down_1.png" width="22" height="34"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="64" height="63">
   <data encoding="csv">
@@ -122,7 +131,6 @@
   <object id="63" x="936.125" y="207" width="7.75" height="21.5"/>
   <object id="64" x="937.5" y="206.875" width="22.375" height="10.375"/>
   <object id="65" x="951.625" y="62.875" width="8.25" height="152.5"/>
-  <object id="66" x="847.5" y="62.25" width="32.75" height="11.75"/>
   <object id="67" x="880" y="48.625" width="64.125" height="34.375"/>
   <object id="68" x="893.375" y="69.25" width="37.75" height="43.625"/>
   <object id="69" x="905.25" y="106.625" width="14.125" height="11.75"/>
@@ -240,7 +248,6 @@
   <object id="217" x="678.5" y="164.25" width="82.5" height="20.25"/>
   <object id="218" x="704.75" y="190.25" width="7.25" height="48"/>
   <object id="219" x="728" y="191.25" width="7" height="46.75"/>
-  <object id="220" x="704.25" y="189.75" width="31" height="24.75"/>
   <object id="221" x="675.25" y="180.25" width="12" height="90.5"/>
   <object id="223" x="0.5" y="332.25" width="32.25" height="25"/>
   <object id="224" x="0.25" y="270.5" width="33.5" height="21.5"/>
@@ -256,6 +263,10 @@
   <object id="243" x="33.8182" y="267.636" width="14.5455" height="20.5455"/>
   <object id="244" x="46" y="251.455" width="18" height="20.3636"/>
   <object id="245" x="60.9091" y="235.455" width="18.9091" height="20.7273"/>
+  <object id="259" x="848" y="64" width="47.3636" height="10.3636"/>
+  <object id="261" x="934" y="59.6364" width="25.7273" height="13.9091"/>
+  <object id="263" x="704.375" y="168.75" width="30.875" height="38"/>
+  <object id="265" x="665" y="997.5" width="305.5" height="10.5"/>
  </objectgroup>
  <objectgroup name="transiciones1">
   <object id="250" x="120.333" y="992.667" width="55.6667" height="15.3333"/>
@@ -263,11 +274,184 @@
  <objectgroup name="final">
   <object id="258" x="497.909" y="245.636" width="26.2727" height="18"/>
  </objectgroup>
- <objectgroup name="blue"/>
+ <objectgroup name="blue">
+  <object id="292" gid="4537" x="866" y="993" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="293" gid="4537" x="759" y="947" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="294" gid="4537" x="551" y="941" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="295" gid="4537" x="475" y="923" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="296" gid="4537" x="302" y="941" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup name="transiciones2">
   <object id="254" x="478.5" y="635.75" width="65.75" height="11.25"/>
  </objectgroup>
  <objectgroup name="transiciones3">
   <object id="257" x="472.182" y="586.727" width="78.5455" height="17.8182"/>
+ </objectgroup>
+ <objectgroup name="yellow">
+  <object id="270" gid="4538" x="463" y="718" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="271" gid="4538" x="533" y="713" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="272" gid="4538" x="463" y="878" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="273" gid="4538" x="535" y="870" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="274" gid="4538" x="640" y="699" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="275" gid="4538" x="361" y="691" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="276" gid="4538" x="832" y="516" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="277" gid="4538" x="170" y="517" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="278" gid="4538" x="168" y="353" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="279" gid="4538" x="833" y="346" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="280" gid="4538" x="865" y="144" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="281" gid="4538" x="914" y="146" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="282" gid="4538" x="99" y="228" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="red">
+  <object id="307" gid="4539" x="455.667" y="553.667" width="22" height="34">
+   <properties>
+    <property name="red" value="red"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="310" gid="4539" x="535.333" y="507" width="22" height="34">
+   <properties>
+    <property name="red" value="red"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="311" gid="4539" x="458" y="455.667" width="22" height="34">
+   <properties>
+    <property name="red" value="red"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="312" gid="4539" x="537.333" y="404" width="22" height="34">
+   <properties>
+    <property name="red" value="red"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="313" gid="4539" x="457" y="362.667" width="22" height="34">
+   <properties>
+    <property name="red" value="red"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="314" gid="4539" x="537.667" y="350.333" width="22" height="34">
+   <properties>
+    <property name="red" value="red"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="315" gid="4539" x="537.333" y="451.667" width="22" height="34">
+   <properties>
+    <property name="red" value="red"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="316" gid="4539" x="538" y="569.667" width="22" height="34">
+   <properties>
+    <property name="red" value="red"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="317" gid="4539" x="455.667" y="498.333" width="22" height="34">
+   <properties>
+    <property name="red" value="red"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="318" gid="4539" x="459.333" y="397.333" width="22" height="34">
+   <properties>
+    <property name="red" value="red"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

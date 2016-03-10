@@ -2,28 +2,31 @@ package com.dani.zelda.managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Intersector;
-import com.badlogic.gdx.math.Polygon;
-import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Pool;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.dani.zelda.GameMain;
 import com.dani.zelda.characters.*;
 import com.badlogic.gdx.utils.Array;
 import com.dani.zelda.characters.Character;
-import com.dani.zelda.screens.Credits;
-import com.dani.zelda.screens.EndScreen;
-import com.dani.zelda.screens.GameScreen;
-import com.dani.zelda.screens.MainMenuScreen;
+import com.dani.zelda.characters.item.Laser;
+import com.dani.zelda.screens.*;
 import com.dani.zelda.util.Constants;
+
+import java.util.Random;
+
 import static com.dani.zelda.util.Constants.*;
 
 public class SpriteManager
@@ -38,16 +41,15 @@ public class SpriteManager
     public Array<Rectangle> tiles;
 
     Zelda zelda;
-    public Array<Enemy> blueEnemies;
 
     public int gamestatus;
     public static final int GAME_PAUSED = 0;
     public static final int GAME_RUNNING = 1;
-
-    //TODO ARRAY enemigos
-    //Array<Enemy> enemies;
-    //TODO ???
-    //Array<Explosion> explosions;
+    public boolean giroYellow;
+    public int sw4;
+    public int sw5;
+    public BitmapFont font;
+    public int x1, x2;
 
     private Pool<Rectangle> rectPool = new Pool<Rectangle>()
     {
@@ -57,17 +59,24 @@ public class SpriteManager
             return new Rectangle();
         }
     };
-    public static Array<Enemy> blueEnemy = new Array<Enemy>();
+    public Array<Enemy>listaEnemigos;
+    public Array<Laser>listaLasers;
 
     public SpriteManager(GameMain game, int x, int y)
     {
         this.game = game;
-
+		
+		this.listaEnemigos = game.enemies;
+        this.listaLasers = game.lasers;
+        giroYellow = false;
         gamestatus = GAME_RUNNING;
-
+        sw4 = 0;
         camera = new OrthographicCamera();
-
+        sw5 = 0;
         camera.setToOrtho(false, 10 * Constants.TILE_WIDTH, 10 * Constants.TILE_HEIGHT);
+        font = new BitmapFont();
+        x1 = 400;
+        x2 = 700;
 
         camera.update();
 
@@ -95,11 +104,47 @@ public class SpriteManager
 
         sw = 0;
 
-        //TODO UNUSED
         tiles = new Array<Rectangle>();
 
-        blueEnemies = new Array<Enemy>();
+        //blueEnemies = new Array<Enemy>();
 
+    }
+
+    private void updateEnemigosAzules(float dt)
+    {
+        for (Enemy enemy: listaEnemigos)
+        {
+            if(enemy instanceof BlueEnemy)
+                enemy.update(dt, "enemy1");
+            else if(enemy instanceof YellowEnemy)
+            {
+                enemy.update(dt, "enemy2");
+                enemy.fire();
+                if (enemy.disparo)
+                {
+                    game.lasers.add(new Laser(enemy.position.x, enemy.position.y + 50, enemy.state));
+                    enemy.disparo = false;
+                }
+            }
+            else if(enemy instanceof  RedEnemy)
+            {
+                enemy.update(dt, "enemy3");
+            }
+        }
+    }
+
+    public void updateLasers(float dt)
+    {
+        for(Laser l : listaLasers)
+        {
+            l.update(dt);
+            if(l.state == Character.State.RIGHT) {
+                l.move(new Vector2(+dt, 0));
+            }
+            else{
+                l.move(new Vector2(-dt, 0));
+            }
+        }
     }
 
     public void update(float dt)
@@ -107,22 +152,50 @@ public class SpriteManager
         camera.position.set(zelda.position.x, zelda.position.y, 0);
 
         handleInput();
-        //TODO UNUSED
         checkCollisions();
 
         if (!zelda.isDead())
         {
-            zelda.update(dt);
-
-            for(Enemy e : blueEnemies)
+            zelda.update(dt, "zelda");
+            if(game.levelManager.getCurrentLevel() == 1)
             {
-                e.update(dt);
-                //TODO COMPROBAR COLISIONES ETC
-                //TODO COMPROBAR MUERTE
+                if(ConfigurationManager.isDifficultEnabled())
+                    updateEnemigosAzules(dt*20);
+                else
+                    updateEnemigosAzules(dt);
+                comprobarEnemigosAzules();
+            }
+            if(game.levelManager.getCurrentLevel() == 2)
+            {
+                if(ConfigurationManager.isDifficultEnabled())
+                    updateEnemigosAzules(dt*2);
+                else
+                    updateEnemigosAzules(dt);
+                comprobarEnemigosAzules();
+                //TODO ACTIVAR EL UPDATE, SINO NO PINTARA LOS LASERS
+                //updateLasers(dt);
+            }
+            if(game.levelManager.getCurrentLevel() == 3)
+            {
+                if(ConfigurationManager.isDifficultEnabled())
+                    updateEnemigosAzules(dt*2);
+                else
+                    updateEnemigosAzules(dt);
+                comprobarEnemigosAzules();
+                //TODO ACTIVAR EL UPDATE, SINO NO PINTARA LOS LASERS
+                //updateLasers(dt);
+            }
+            if(game.levelManager.getCurrentLevel() == 4)
+            {
+                if(ConfigurationManager.isDifficultEnabled())
+                    updateEnemigosAzules(dt*2);
+                else
+                    updateEnemigosAzules(dt);
+                comprobarEnemigosAzules();
+                //TODO ACTIVAR EL UPDATE, SINO NO PINTARA LOS LASERS
+                //updateLasers(dt);
             }
         }
-
-        //TODO CARGA ENEMIGOS
     }
 
     private void handleInput()
@@ -157,6 +230,7 @@ public class SpriteManager
             zelda.state = Zelda.State.DEAD;
         }
         */
+        /*
         else if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE))
         {
             if(gamestatus == GAME_PAUSED)
@@ -164,6 +238,7 @@ public class SpriteManager
             if(gamestatus == GAME_RUNNING)
                 pauseGame();
         }
+        */
         else
         {
             zelda.velocity.x = 0;
@@ -182,6 +257,14 @@ public class SpriteManager
         gamestatus = GAME_RUNNING;
     }
 
+    private void drawHud()
+    {
+        //camera.position.x - CAMERA_WIDTH / 2 + PLAYER_WIDTH * 4 + 10, CAMERA_HEIGHT - TILE_HEIGHT / 2
+        font.draw(batch, " VIDAS " + zelda.lives,zelda.position.x -50,zelda.position.y +80);
+        font.draw(batch, " NIVEL " + game.levelManager.getCurrentLevel(), zelda.position.x + 20, zelda.position.y + 80);
+        font.setColor(Color.BLUE);
+
+    }
     public void render()
     {
         if (gamestatus == GAME_RUNNING)
@@ -190,9 +273,8 @@ public class SpriteManager
             game.levelManager.mapRenderer.setView(camera);
             game.levelManager.mapRenderer.render();
 
-            //TODO CARGAR ENEMIGOS
-
             batch.begin();
+
 
             if (!zelda.isDead())
             {
@@ -200,139 +282,213 @@ public class SpriteManager
                 comprobarColisiones();
                 combrobarColisiones2();
 
-                if(game.levelManager.getCurrentLevel() == 0)
+                for(Enemy e : listaEnemigos)
+                {
+                    if(e instanceof BlueEnemy)
+                    {
+                        if (camera.frustum.pointInFrustum(new Vector3(e.position.x, e.position.y, 0)))
+                        {
+                            if (e.position.x > zelda.position.x)
+                            {
+                                e.position.x--;
+                                e.rect.x--;
+                                e.state = Character.State.LEFT;
+
+                                if(e.position.x - zelda.position.x < 10)
+                                {
+                                    if (e.position.y > zelda.position.y)
+                                    {
+                                        if(e.position.y - zelda.position.y > 10)
+                                        {
+                                            e.position.y--;
+                                            e.rect.y--;
+                                        }
+                                    }
+                                }
+                                /*
+                                else if(((e.position.x - zelda.position.x) == 10 && zelda.state == Character.State.ATTACK))
+                                {
+                                    ((BlueEnemy) e).position.x ++;
+                                    ((BlueEnemy) e).rect.x++;
+                                }
+                                */
+                            }
+                            else if (e.position.x < zelda.position.x)
+                            {
+                                e.position.x++;
+                                e.rect.x++;
+
+                                if (e.position.y < zelda.position.y)
+                                {
+                                    e.position.y++;
+                                    e.rect.y++;
+                                }
+
+                            }
+                        }
+                    }
+                    else if(e instanceof YellowEnemy)
+                    {
+                        if(!giroYellow)
+                        {
+                            giroYellow = true;
+                            Random n = new Random();
+                            int t = n.nextInt(4);
+                            if(t == 0)
+                            {
+                                ((YellowEnemy) e).state = Character.State.LEFT;
+                            }
+                            else if(t == 1)
+                            {
+                                ((YellowEnemy) e).state = Character.State.RIGHT;
+                            }
+                            else if(t == 2)
+                            {
+                                ((YellowEnemy) e).state = Character.State.UP;
+                            }
+                            else if(t == 3)
+                            {
+                                ((YellowEnemy) e).state = Character.State.DOWN;
+                            }
+                            Timer.schedule(new Timer.Task()
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    giroYellow = false;
+                                }
+                            }, 1);
+                        }
+                    }
+                    //TODO APAÃ‘AR
+                    else if(e instanceof RedEnemy)
+                    {
+                        if (e.position.x < x2 && sw5 == 0)
+                        {
+                            ((RedEnemy) e).state = Character.State.RIGHT;
+                            e.position.x ++;
+                            if(e.position.x > x2)
+                                sw5 = 1;
+                        }
+                        else if(e.position.x > x1 && sw5 == 1)
+                        {
+                            ((RedEnemy) e).state = Character.State.LEFT;
+                            e.position.x--;
+                            if(e.position.x < x1)
+                                sw5 = 0;
+                        }
+                    }
+                }
+
+                if (game.levelManager.getCurrentLevel() == 0)
                 {
                     comprobarTransiciones1();
-                }
-                else if(game.levelManager.getCurrentLevel() == 1)
+                } else if (game.levelManager.getCurrentLevel() == 1)
                 {
                     comprobarTransiciones1();
                     comprobarTransiciones2();
 
-                    //TODO COMPROBAR CHOQUES CON ENEMIGOS
-                }
-                else if(game.levelManager.getCurrentLevel() == 2)
+                    pintarEnemigosAzules();
+                } else if (game.levelManager.getCurrentLevel() == 2)
                 {
                     comprobarTransiciones1();
                     comprobarTransiciones2();
 
-                    //TODO COMPROBAR CHOQUES CON ENEMIGOS
-                }
-                else if(game.levelManager.getCurrentLevel() == 3)
+                    pintarEnemigosAzules();
+                    //pintarLasers();
+                } else if (game.levelManager.getCurrentLevel() == 3)
                 {
                     comprobarTransiciones1();
                     comprobarTransiciones2();
 
-                    //TODO COMPROBAR CHOQUES CON ENEMIGOS
-                }
-                else if(game.levelManager.getCurrentLevel() == 4)
+                    pintarEnemigosAzules();
+                } else if (game.levelManager.getCurrentLevel() == 4)
                 {
                     comprobarTransiciones3();
                     comprobarEndGame();
-                }
 
-                //TODO CARGAR ENEMIGOS
-                for(Enemy e : blueEnemies)
-                {
-                    e.render(batch);
-                    //TODO COMPROBAR COLISIONES ETC
-                    //TODO COMPROBAR MUERTE
+                    pintarEnemigosAzules();
                 }
-
-                //TODO COMPROBAR RESTO DE TRANSICCIONES
+                drawHud();
+                batch.end();
             }
-
-            //TODO WHEN DIE, GO TO ANOTHER SCREEN
-            //shader.setUniform2fv("resolution", resolution, 0, 2);
-            //shader.setUniformf("radius", radius);
-
-            batch.end();
-        }
-        else
-        {
-            Stage stage = new Stage();
-
-            Table table = new Table(game.getSkin());
-            table.setFillParent(true);
-            table.center();
-
-            //TODO LOAD AN IMAGE
-            //Label title = new Label("")
-
-            TextButton continueButton = new TextButton("CONTINUE", game.getSkin());
-            //playButton.setColor(Color.BLUE);
-            continueButton.addListener(new ClickListener() {
-                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                    gamestatus = GAME_RUNNING;
-                    //stage.clear();
-                }
-            });
-            TextButton activateButton = new TextButton("ACTIVATE SOUND", game.getSkin());
-            //playButton.setColor(Color.BLUE);
-            continueButton.addListener(new ClickListener() {
-                public void touchUp(InputEvent event, float x, float y, int pointer, int button)
-                {
-                    gamestatus = GAME_RUNNING;
-                    if(!ResourceManager.getMusic().isPlaying())
-                    {
-                        ResourceManager.startMusic();
-                    }
-                    //stage.clear();
-                }
-            });
-            TextButton desactivateButton = new TextButton("DESACTIVATE SOUND", game.getSkin());
-            //playButton.setColor(Color.BLUE);
-            continueButton.addListener(new ClickListener() {
-                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                    gamestatus = GAME_RUNNING;
-
-                    if(ResourceManager.getMusic().isPlaying())
-                    {
-                        ResourceManager.stopMusic();
-                    }
-                }
-            });
-            TextButton menu = new TextButton("MAIN MENU", game.getSkin());
-            //menu.setColor(Color.BLUE);
-            menu.addListener(new ClickListener()
+            else
             {
-                public void touchUp(InputEvent event, float x, float y, int pointer, int button)
-                {
-                    ResourceManager.stopMusic();
-                    game.dispose();
-                    game.setScreen(new MainMenuScreen(game));
-                }
-            });
-            TextButton exitButton = new TextButton("EXIT", game.getSkin());
-            //exitButton.setColor(Color.BLUE);
-            exitButton.addListener(new ClickListener() {
-                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                    ResourceManager.stopTitleMusic();
-                    game.dispose();
-                    System.exit(0);
-                }
-            });
+                Stage stage = new Stage();
 
-            table.row().height(50);
-            table.add(continueButton.center()).center().width(300).pad(5f);
-            table.row().height(50);
-            table.add(activateButton.center()).center().width(300).pad(5f);
-            table.row().height(50);
-            table.add(desactivateButton.center()).center().width(300).pad(5f);
-            table.row().height(50);
-            table.add(menu).center().width(300).pad(5f);
-            table.row().height(50);
-            table.add(exitButton).center().width(300).pad(5f);
-            stage.addActor(table);
-            Gdx.input.setInputProcessor(stage);
+                Table table = new Table(game.getSkin());
+                table.setFillParent(true);
+                table.center();
 
-            stage.act();
+                TextButton continueButton = new TextButton("CONTINUE", game.getSkin());
+                //playButton.setColor(Color.BLUE);
+                continueButton.addListener(new ClickListener() {
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        gamestatus = GAME_RUNNING;
+                        //stage.clear();
+                    }
+                });
+                TextButton activateButton = new TextButton("ACTIVATE SOUND", game.getSkin());
+                //playButton.setColor(Color.BLUE);
+                continueButton.addListener(new ClickListener() {
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        //gamestatus = GAME_RUNNING;
+                        if (!ResourceManager.getMusic().isPlaying()) {
+                            ResourceManager.startMusic();
+                        }
+                        //stage.clear();
+                    }
+                });
+                TextButton desactivateButton = new TextButton("DESACTIVATE SOUND", game.getSkin());
+                //playButton.setColor(Color.BLUE);
+                continueButton.addListener(new ClickListener() {
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        //gamestatus = GAME_RUNNING;
+                        if (ResourceManager.getMusic().isPlaying()) {
+                            ResourceManager.stopMusic();
+                        }
+                    }
+                });
+                TextButton menu = new TextButton("MAIN MENU", game.getSkin());
+                //menu.setColor(Color.BLUE);
+                menu.addListener(new ClickListener() {
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        ResourceManager.stopMusic();
+                        game.dispose();
+                        game.setScreen(new MainMenuScreen(game));
+                    }
+                });
+                TextButton exitButton = new TextButton("EXIT", game.getSkin());
+                //exitButton.setColor(Color.BLUE);
+                exitButton.addListener(new ClickListener() {
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        ResourceManager.stopTitleMusic();
+                        game.dispose();
+                        System.exit(0);
+                    }
+                });
 
+                table.row().height(50);
+                table.add(continueButton).center().width(300).pad(5f);
+                table.row().height(50);
+                table.add(activateButton).center().width(300).pad(5f);
+                table.row().height(50);
+                table.add(desactivateButton).center().width(300).pad(5f);
+                table.row().height(50);
+                table.add(menu).center().width(300).pad(5f);
+                table.row().height(50);
+                table.add(exitButton).center().width(300).pad(5f);
 
-            stage.draw();
+                stage.addActor(table);
+
+                stage.act();
+                Gdx.input.setInputProcessor(stage);
+                stage.draw();
+            }
         }
     }
 
+    /*
     /**
      * @Deprecated
      */
@@ -340,7 +496,7 @@ public class SpriteManager
     {
         Array<Rectangle> tiles = new Array<Rectangle>();
 
-        // Recoge las celdas de la posición del jugador
+        // Recoge las celdas de la posiciï¿½n del jugador
         int startX = (int) (zelda.position.x + zelda.velocity.x);
         int endX = (int) (zelda.position.x + Constants.PLAYER_WIDTH + zelda.velocity.x);
         int startY = (int) (zelda.position.y + zelda.velocity.y);
@@ -374,6 +530,14 @@ public class SpriteManager
         //TODO
     }
 
+    public void pintarLasers()
+    {
+        for(Laser laser : game.lasers)
+        {
+            laser.render(batch);
+        }
+    }
+
     public void comprobarTransiciones1()
     {
         Rectangle rectangle = new Rectangle(0,0,0,0);
@@ -390,8 +554,11 @@ public class SpriteManager
                     LevelManager.transiciones1.clear();
                     game.levelManager.passNextLevel();
 
-                    ResourceManager.stopMusic();
-                    ResourceManager.stopSound();
+                    if(ResourceManager.music != null)
+                    {
+                        ResourceManager.stopMusic();
+                        ResourceManager.stopSound();
+                    }
 
                     game.setScreen(new GameScreen(game, SECONDX, SECONDY));
                 }
@@ -399,12 +566,16 @@ public class SpriteManager
                 {
                     LevelManager.transiciones1.clear();
                     LevelManager.transiciones2.clear();
-                    blueEnemies.clear();
+                    //listaEnemigos.clear();
                     game.levelManager.reduceLevel();
 
-                    ResourceManager.stopMusic();
-                    ResourceManager.stopSound();
+                    if(ResourceManager.music != null)
+                    {
+                        ResourceManager.stopMusic();
+                        ResourceManager.stopSound();
+                    }
 
+                    game.reinstanciarEnemigos();
 
                     game.setScreen(new GameScreen(game, FIRSTX2, FIRSTY2));
                 }
@@ -412,11 +583,16 @@ public class SpriteManager
                 {
                     LevelManager.transiciones1.clear();
                     LevelManager.transiciones2.clear();
-                    blueEnemies.clear();
+                    listaEnemigos.clear();
                     game.levelManager.reduceLevel();
 
-                    ResourceManager.stopMusic();
-                    ResourceManager.stopSound();
+                    if(ResourceManager.music != null)
+                    {
+                        ResourceManager.stopMusic();
+                        ResourceManager.stopSound();
+                    }
+
+                    game.reinstanciarEnemigos();
 
                     game.setScreen(new GameScreen(game, SECONDX2, SECONDY2));
                 }
@@ -425,11 +601,16 @@ public class SpriteManager
                     LevelManager.transiciones1.clear();
                     LevelManager.transiciones2.clear();
                     LevelManager.transiciones3.clear();
-                    blueEnemies.clear();
+                    listaEnemigos.clear();
                     game.levelManager.reduceLevel();
 
-                    ResourceManager.stopMusic();
-                    ResourceManager.stopSound();
+                    if(ResourceManager.music != null)
+                    {
+                        ResourceManager.stopMusic();
+                        ResourceManager.stopSound();
+                    }
+
+                    game.reinstanciarEnemigos();
 
                     game.setScreen(new GameScreen(game, THIRDX2, THIRDY2));
                 }
@@ -452,11 +633,14 @@ public class SpriteManager
 
                     LevelManager.transiciones1.clear();
                     LevelManager.transiciones2.clear();
-                    blueEnemies.clear();
+                    listaEnemigos.clear();
                     game.levelManager.passNextLevel();
 
-                    ResourceManager.stopMusic();
-                    ResourceManager.stopSound();
+                    if(ResourceManager.music != null)
+                    {
+                        ResourceManager.stopMusic();
+                        ResourceManager.stopSound();
+                    }
 
                     game.setScreen(new GameScreen(game, THIRDX, THIRDY));
                 }
@@ -468,17 +652,21 @@ public class SpriteManager
 
                     LevelManager.transiciones1.clear();
                     LevelManager.transiciones2.clear();
-                    blueEnemies.clear();
+                    listaEnemigos.clear();
                     game.levelManager.passNextLevel();
 
-                    ResourceManager.stopMusic();
-                    ResourceManager.stopSound();
+                    if(ResourceManager.music != null)
+                    {
+                        ResourceManager.stopMusic();
+                        ResourceManager.stopSound();
+                    }
 
                     game.setScreen(new GameScreen(game, FOURTHX, FOURTHY));
                 }
                 else if(game.levelManager.getCurrentLevel() == 3)
                 {
                     game.levelManager.passNextLevel();
+                    //listaEnemigos.clear();
                     System.out.println(game.levelManager.getCurrentLevel());
                     zelda.position.x = FIFTHX;
                     zelda.rect.x = FIFTHX;
@@ -498,6 +686,7 @@ public class SpriteManager
             {
                 if(game.levelManager.getCurrentLevel() == 4)
                 {
+                    //listaEnemigos.clear();
                     game.levelManager.reduceLevel();
                     zelda.position.x = FOURTHX2;
                     zelda.rect.x = FOURTHX2;
@@ -525,10 +714,13 @@ public class SpriteManager
                     LevelManager.transiciones3.clear();
                     LevelManager.endGame.clear();
 
-                    blueEnemies.clear();
+                    listaEnemigos.clear();
 
-                    ResourceManager.stopMusic();
-                    ResourceManager.stopSound();
+                    if(ResourceManager.music != null)
+                    {
+                        ResourceManager.stopMusic();
+                        ResourceManager.stopSound();
+                    }
 
                     game.sw = 0;
                     game.levelManager.setLevel(0);
@@ -667,5 +859,54 @@ public class SpriteManager
         camera.viewportHeight = height;
         camera.viewportWidth = width;
         camera.update();
+    }
+
+    public void comprobarEnemigosAzules()
+    {
+        if(listaEnemigos.size == 0)
+        {
+            return;
+        }
+        for (Enemy enemy: listaEnemigos)
+        {
+            if(enemy.rect.overlaps(zelda.rect))
+            {
+                if(zelda.state != Character.State.ATTACK)
+                {
+                    if(!zelda.muerto)
+                    {
+                        zelda.lives--;
+                        zelda.muerto = true;
+                    }
+                    Timer.schedule(new Timer.Task()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            zelda.muerto = false;
+                        }
+                    }, 4);
+                }
+                else
+                    listaEnemigos.removeValue(enemy, true);
+                System.out.print(zelda.lives);
+                if(zelda.lives == 0)
+                {
+                    if (ResourceManager.music != null) {
+                        ResourceManager.stopMusic();
+                        ResourceManager.stopSound();
+                    }
+                    game.setScreen(new GameOverScreen(game));
+                }
+            }
+        }
+    }
+
+    public void pintarEnemigosAzules()
+    {
+        for(Enemy enemy: listaEnemigos)
+        {
+            enemy.render(batch);
+        }
     }
 }

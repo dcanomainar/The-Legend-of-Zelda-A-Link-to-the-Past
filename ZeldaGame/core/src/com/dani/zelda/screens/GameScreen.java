@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.dani.zelda.GameMain;
+import com.dani.zelda.managers.ConfigurationManager;
 import com.dani.zelda.managers.ResourceManager;
 import com.dani.zelda.managers.SpriteManager;
 import static com.dani.zelda.util.Constants.*;
@@ -26,13 +27,17 @@ public class GameScreen implements Screen
     public GameScreen(GameMain game, int x, int y)
     {
         this.game = game;
+
         spriteBatch = new SpriteBatch();
         font = new BitmapFont();
 
         ResourceManager.loadAllResources();
         spriteManager = new SpriteManager(game, x, y);
 
-        ResourceManager.loadMusic();
+        if(ConfigurationManager.isSoundEnabled())
+        {
+            ResourceManager.loadMusic();
+        }
 
     }
 

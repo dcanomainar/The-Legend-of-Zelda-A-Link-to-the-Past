@@ -1,0 +1,726 @@
+
+all.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+enemy1_down
+  rotate: false
+  xy: 1, 25
+  size: 22, 38
+  orig: 22, 38
+  offset: 0, 0
+  index: 4
+zelda_dead
+  rotate: false
+  xy: 1, 1
+  size: 24, 22
+  orig: 24, 22
+  offset: 0, 0
+  index: 2
+enemy1_left
+  rotate: false
+  xy: 25, 35
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: 1
+zelda_up_attack
+  rotate: false
+  xy: 27, 1
+  size: 20, 32
+  orig: 20, 32
+  offset: 0, 0
+  index: 5
+enemy1_right
+  rotate: false
+  xy: 59, 35
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: 1
+enemy1_left
+  rotate: false
+  xy: 49, 5
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: 2
+enemy1_right
+  rotate: false
+  xy: 93, 35
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: 2
+enemy3_left
+  rotate: false
+  xy: 82, 6
+  size: 32, 27
+  orig: 32, 27
+  offset: 0, 0
+  index: 3
+enemy3_right
+  rotate: false
+  xy: 126, 36
+  size: 32, 27
+  orig: 32, 27
+  offset: 0, 0
+  index: 3
+zelda_down_attack
+  rotate: false
+  xy: 160, 36
+  size: 32, 27
+  orig: 32, 27
+  offset: 0, 0
+  index: 6
+enemy1_left
+  rotate: false
+  xy: 194, 36
+  size: 31, 27
+  orig: 31, 27
+  offset: 0, 0
+  index: 3
+enemy1_right
+  rotate: false
+  xy: 227, 36
+  size: 31, 27
+  orig: 31, 27
+  offset: 0, 0
+  index: 3
+enemy3_left
+  rotate: false
+  xy: 260, 36
+  size: 29, 27
+  orig: 29, 27
+  offset: 0, 0
+  index: 1
+enemy3_right
+  rotate: false
+  xy: 291, 36
+  size: 29, 27
+  orig: 29, 27
+  offset: 0, 0
+  index: 1
+zelda_up_attack
+  rotate: false
+  xy: 322, 36
+  size: 29, 27
+  orig: 29, 27
+  offset: 0, 0
+  index: 8
+enemy3_left
+  rotate: false
+  xy: 353, 37
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: 2
+enemy3_right
+  rotate: false
+  xy: 384, 37
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: 2
+zelda_up_attack
+  rotate: false
+  xy: 415, 40
+  size: 32, 23
+  orig: 32, 23
+  offset: 0, 0
+  index: 9
+zelda_left_attack
+  rotate: false
+  xy: 449, 42
+  size: 31, 21
+  orig: 31, 21
+  offset: 0, 0
+  index: 6
+zelda_right_attack
+  rotate: false
+  xy: 482, 42
+  size: 31, 21
+  orig: 31, 21
+  offset: 0, 0
+  index: 6
+zelda_left_attack
+  rotate: false
+  xy: 515, 42
+  size: 29, 21
+  orig: 29, 21
+  offset: 0, 0
+  index: 5
+zelda_right_attack
+  rotate: false
+  xy: 546, 42
+  size: 29, 21
+  orig: 29, 21
+  offset: 0, 0
+  index: 5
+zelda_down_attack
+  rotate: false
+  xy: 577, 34
+  size: 28, 29
+  orig: 28, 29
+  offset: 0, 0
+  index: 5
+zelda_left_attack
+  rotate: false
+  xy: 607, 35
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: 8
+zelda_right_attack
+  rotate: false
+  xy: 637, 35
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: 8
+enemy2_down
+  rotate: false
+  xy: 667, 33
+  size: 25, 30
+  orig: 25, 30
+  offset: 0, 0
+  index: 1
+zelda_up_attack
+  rotate: false
+  xy: 694, 33
+  size: 24, 30
+  orig: 24, 30
+  offset: 0, 0
+  index: 7
+enemy2_up
+  rotate: false
+  xy: 720, 35
+  size: 25, 28
+  orig: 25, 28
+  offset: 0, 0
+  index: 1
+enemy3_left
+  rotate: false
+  xy: 747, 37
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: 4
+enemy3_right
+  rotate: false
+  xy: 775, 37
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: 4
+zelda_left_attack
+  rotate: false
+  xy: 803, 39
+  size: 26, 24
+  orig: 26, 24
+  offset: 0, 0
+  index: 4
+zelda_right_attack
+  rotate: false
+  xy: 831, 39
+  size: 26, 24
+  orig: 26, 24
+  offset: 0, 0
+  index: 4
+zelda_left_attack
+  rotate: false
+  xy: 859, 42
+  size: 28, 21
+  orig: 28, 21
+  offset: 0, 0
+  index: 7
+zelda_left_attack
+  rotate: false
+  xy: 116, 1
+  size: 23, 31
+  orig: 23, 31
+  offset: 0, 0
+  index: 9
+enemy1_down
+  rotate: false
+  xy: 141, 1
+  size: 22, 33
+  orig: 22, 33
+  offset: 0, 0
+  index: 1
+enemy3_up
+  rotate: false
+  xy: 165, 1
+  size: 22, 33
+  orig: 22, 33
+  offset: 0, 0
+  index: 2
+enemy3_up
+  rotate: false
+  xy: 189, 1
+  size: 22, 33
+  orig: 22, 33
+  offset: 0, 0
+  index: 3
+enemy3_down
+  rotate: false
+  xy: 213, 1
+  size: 21, 33
+  orig: 21, 33
+  offset: 0, 0
+  index: 2
+enemy3_up
+  rotate: false
+  xy: 236, 1
+  size: 21, 33
+  orig: 21, 33
+  offset: 0, 0
+  index: 1
+zelda_right_attack
+  rotate: false
+  xy: 259, 3
+  size: 23, 31
+  orig: 23, 31
+  offset: 0, 0
+  index: 9
+zelda_up_attack
+  rotate: false
+  xy: 284, 4
+  size: 22, 30
+  orig: 22, 30
+  offset: 0, 0
+  index: 4
+zelda_down_attack
+  rotate: false
+  xy: 308, 5
+  size: 21, 29
+  orig: 21, 29
+  offset: 0, 0
+  index: 2
+zelda_down_attack
+  rotate: false
+  xy: 331, 3
+  size: 20, 31
+  orig: 20, 31
+  offset: 0, 0
+  index: 3
+enemy1_down
+  rotate: false
+  xy: 353, 1
+  size: 22, 34
+  orig: 22, 34
+  offset: 0, 0
+  index: 2
+enemy1_down
+  rotate: false
+  xy: 377, 1
+  size: 22, 34
+  orig: 22, 34
+  offset: 0, 0
+  index: 3
+enemy3_down
+  rotate: false
+  xy: 401, 1
+  size: 22, 34
+  orig: 22, 34
+  offset: 0, 0
+  index: 1
+enemy3_down
+  rotate: false
+  xy: 425, 3
+  size: 22, 35
+  orig: 22, 35
+  offset: 0, 0
+  index: 3
+zelda_up_attack
+  rotate: false
+  xy: 449, 5
+  size: 20, 35
+  orig: 20, 35
+  offset: 0, 0
+  index: 6
+zelda_down_attack
+  rotate: false
+  xy: 471, 9
+  size: 20, 31
+  orig: 20, 31
+  offset: 0, 0
+  index: 4
+enemy1_up
+  rotate: false
+  xy: 493, 13
+  size: 22, 27
+  orig: 22, 27
+  offset: 0, 0
+  index: 3
+enemy3_up
+  rotate: false
+  xy: 517, 13
+  size: 22, 27
+  orig: 22, 27
+  offset: 0, 0
+  index: 4
+zelda_right_attack
+  rotate: false
+  xy: 889, 42
+  size: 28, 21
+  orig: 28, 21
+  offset: 0, 0
+  index: 7
+enemy1_up
+  rotate: false
+  xy: 541, 14
+  size: 22, 26
+  orig: 22, 26
+  offset: 0, 0
+  index: 1
+zelda_left_attack
+  rotate: false
+  xy: 919, 39
+  size: 23, 24
+  orig: 23, 24
+  offset: 0, 0
+  index: 3
+zelda_right_attack
+  rotate: false
+  xy: 944, 39
+  size: 23, 24
+  orig: 23, 24
+  offset: 0, 0
+  index: 3
+zelda_up_attack
+  rotate: false
+  xy: 969, 39
+  size: 23, 24
+  orig: 23, 24
+  offset: 0, 0
+  index: 3
+enemy1_up
+  rotate: false
+  xy: 994, 37
+  size: 22, 26
+  orig: 22, 26
+  offset: 0, 0
+  index: 2
+enemy3_up
+  rotate: false
+  xy: 1018, 37
+  size: 22, 26
+  orig: 22, 26
+  offset: 0, 0
+  index: 5
+enemy3_up
+  rotate: false
+  xy: 1042, 37
+  size: 22, 26
+  orig: 22, 26
+  offset: 0, 0
+  index: 6
+enemy3_up
+  rotate: false
+  xy: 1066, 37
+  size: 22, 26
+  orig: 22, 26
+  offset: 0, 0
+  index: 7
+enemy2_left
+  rotate: false
+  xy: 1090, 35
+  size: 21, 28
+  orig: 21, 28
+  offset: 0, 0
+  index: 1
+enemy2_right
+  rotate: false
+  xy: 1113, 35
+  size: 21, 28
+  orig: 21, 28
+  offset: 0, 0
+  index: 1
+zelda_up_attack
+  rotate: false
+  xy: 1136, 41
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: 1
+zelda_up_attack
+  rotate: false
+  xy: 1161, 41
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: 2
+zelda_down_attack
+  rotate: false
+  xy: 1185, 40
+  size: 20, 23
+  orig: 20, 23
+  offset: 0, 0
+  index: 1
+zelda_left
+  rotate: false
+  xy: 1207, 39
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: 3
+zelda_left
+  rotate: false
+  xy: 1228, 39
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: 5
+zelda_left
+  rotate: false
+  xy: 1249, 39
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: 7
+zelda_right
+  rotate: false
+  xy: 1270, 39
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: 3
+zelda_right
+  rotate: false
+  xy: 1291, 39
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: 5
+zelda_left
+  rotate: false
+  xy: 1312, 39
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 1
+zelda_left
+  rotate: false
+  xy: 1332, 39
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 2
+zelda_left
+  rotate: false
+  xy: 1352, 40
+  size: 19, 23
+  orig: 19, 23
+  offset: 0, 0
+  index: 4
+zelda_right
+  rotate: false
+  xy: 1373, 40
+  size: 19, 23
+  orig: 19, 23
+  offset: 0, 0
+  index: 4
+zelda_right
+  rotate: false
+  xy: 1394, 40
+  size: 19, 23
+  orig: 19, 23
+  offset: 0, 0
+  index: 7
+zelda_left
+  rotate: false
+  xy: 1415, 39
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 6
+zelda_right
+  rotate: false
+  xy: 1435, 39
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 1
+zelda_right
+  rotate: false
+  xy: 1455, 39
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 2
+zelda_right
+  rotate: false
+  xy: 1475, 39
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: 6
+zelda_left_attack
+  rotate: false
+  xy: 1495, 40
+  size: 18, 23
+  orig: 18, 23
+  offset: 0, 0
+  index: 2
+zelda_right_attack
+  rotate: false
+  xy: 1515, 40
+  size: 18, 23
+  orig: 18, 23
+  offset: 0, 0
+  index: 2
+zelda_up
+  rotate: false
+  xy: 1535, 39
+  size: 17, 24
+  orig: 17, 24
+  offset: 0, 0
+  index: 1
+zelda_up_1_no_landscape
+  rotate: false
+  xy: 1554, 39
+  size: 17, 24
+  orig: 17, 24
+  offset: 0, 0
+  index: -1
+zelda_up
+  rotate: false
+  xy: 1573, 39
+  size: 17, 24
+  orig: 17, 24
+  offset: 0, 0
+  index: 7
+zelda_down
+  rotate: false
+  xy: 1592, 39
+  size: 16, 24
+  orig: 16, 24
+  offset: 0, 0
+  index: 1
+zelda_down
+  rotate: false
+  xy: 1610, 39
+  size: 16, 24
+  orig: 16, 24
+  offset: 0, 0
+  index: 7
+zelda_up
+  rotate: false
+  xy: 1628, 40
+  size: 17, 23
+  orig: 17, 23
+  offset: 0, 0
+  index: 2
+zelda_up
+  rotate: false
+  xy: 1647, 40
+  size: 17, 23
+  orig: 17, 23
+  offset: 0, 0
+  index: 6
+zelda_dead
+  rotate: false
+  xy: 1666, 42
+  size: 18, 21
+  orig: 18, 21
+  offset: 0, 0
+  index: 1
+zelda_dead
+  rotate: false
+  xy: 1686, 48
+  size: 24, 15
+  orig: 24, 15
+  offset: 0, 0
+  index: 3
+zelda_up
+  rotate: false
+  xy: 1712, 41
+  size: 17, 22
+  orig: 17, 22
+  offset: 0, 0
+  index: 3
+zelda_up
+  rotate: false
+  xy: 1731, 41
+  size: 17, 22
+  orig: 17, 22
+  offset: 0, 0
+  index: 4
+zelda_up
+  rotate: false
+  xy: 1750, 41
+  size: 17, 22
+  orig: 17, 22
+  offset: 0, 0
+  index: 5
+zelda_down
+  rotate: false
+  xy: 1769, 40
+  size: 16, 23
+  orig: 16, 23
+  offset: 0, 0
+  index: 2
+zelda_down
+  rotate: false
+  xy: 1787, 40
+  size: 16, 23
+  orig: 16, 23
+  offset: 0, 0
+  index: 6
+zelda_left_attack
+  rotate: false
+  xy: 1805, 40
+  size: 16, 23
+  orig: 16, 23
+  offset: 0, 0
+  index: 1
+zelda_right_attack
+  rotate: false
+  xy: 1823, 40
+  size: 16, 23
+  orig: 16, 23
+  offset: 0, 0
+  index: 1
+zelda_down
+  rotate: false
+  xy: 1841, 41
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: 3
+zelda_down
+  rotate: false
+  xy: 1841, 41
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: 5
+zelda_down
+  rotate: false
+  xy: 1859, 41
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: 4
+amarillo_derecha
+  rotate: false
+  xy: 1877, 51
+  size: 15, 12
+  orig: 15, 12
+  offset: 0, 0
+  index: -1
+amarillo_izquierda
+  rotate: false
+  xy: 1894, 51
+  size: 15, 12
+  orig: 15, 12
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 1911, 50
+  size: 14, 13
+  orig: 14, 13
+  offset: 0, 0
+  index: -1

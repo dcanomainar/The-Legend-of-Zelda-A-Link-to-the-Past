@@ -4,24 +4,23 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class ResourceManager
 {
     private static TextureAtlas atlas;
     private static TextureAtlas atlas2;
     private static TextureAtlas atlas3;
-    private static Music music;
+    public static Music music;
     public static Music musicTitle;
     public static Music musicEnd;
     public static Music musicGameOver;
     public static Music castleMusic;
-    private static Sound sound;
+    public static Sound sound;
 
     public static void loadAllResources()
     {
-        atlas = new TextureAtlas(Gdx.files.internal("resources/zelda/zelda.atlas"));
-        atlas2 = new TextureAtlas(Gdx.files.internal("resources/zelda/attack/zelda.atlas"));
-        atlas3 = new TextureAtlas(Gdx.files.internal("resources/enemies/enemy_1/blueEnemy.atlas"));
+        atlas = new TextureAtlas(Gdx.files.internal("resources/todo/all.atlas"));
 		//sound.setVolume(10);
     }
 
@@ -58,10 +57,12 @@ public class ResourceManager
 
     public static void loadGameOverMusic()
     {
+        /*
         musicGameOver = Gdx.audio.newMusic(Gdx.files.internal("game_over.mp3"));
         musicGameOver.setLooping(true);
         musicGameOver.setVolume(5);
         startGameOverMusic();
+        */
     }
 
     public static void loadCastleMusic()
@@ -93,7 +94,8 @@ public class ResourceManager
 
     public static void stopGameOverMusic()
     {
-        musicGameOver.stop();
+        if(musicGameOver != null)
+            musicGameOver.stop();
     }
 
     public static Music getGameOverMusic()

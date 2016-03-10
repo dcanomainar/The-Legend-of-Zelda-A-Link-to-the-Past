@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.dani.zelda.GameMain;
+import com.dani.zelda.managers.ConfigurationManager;
 import com.dani.zelda.managers.ResourceManager;
 
 import static com.dani.zelda.util.Constants.*;
@@ -29,7 +30,10 @@ public class GameOverScreen implements Screen {
         texture = new Texture(Gdx.files.internal("resources/game over.png"));
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
-        ResourceManager.loadGameOverMusic();
+        if(ConfigurationManager.isSoundEnabled())
+        {
+            ResourceManager.loadGameOverMusic();
+        }
     }
 
     @Override
@@ -52,6 +56,7 @@ public class GameOverScreen implements Screen {
             {
                 ResourceManager.stopGameOverMusic();
                 dispose();
+                game.levelManager.restarCurrentLevel();
                 game.setScreen(new GameScreen(game, FIRSTX, FIRSTY));
             }
         });

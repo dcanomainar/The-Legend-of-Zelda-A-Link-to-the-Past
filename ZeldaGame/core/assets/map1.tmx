@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="16" tileheight="16" nextobjectid="475">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="16" tileheight="16" nextobjectid="505">
  <tileset firstgid="1" name="7620" tilewidth="16" tileheight="16" tilecount="1280" columns="40">
   <image source="resources/tiles/7620.png" width="649" height="512"/>
+ </tileset>
+ <tileset firstgid="1281" name="enemy1_down_1" tilewidth="22" tileheight="33" tilecount="1" columns="1">
+  <image source="resources/enemies/enemy_1/enemy1_down_1.png" width="22" height="33"/>
+  <tile id="0">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="Base" width="32" height="32">
   <data encoding="csv">
@@ -54,7 +63,6 @@
   <object id="16" x="128.125" y="372.75" width="144.125" height="6.375"/>
   <object id="17" x="128.125" y="320" width="31.875" height="15.875"/>
   <object id="18" x="208" y="319.75" width="47.875" height="16"/>
-  <object id="19" x="127.875" y="338.625" width="144.25" height="6"/>
   <object id="20" x="272.545" y="174.727" width="9.63636" height="169.636"/>
   <object id="21" x="0" y="372" width="48.3636" height="6"/>
   <object id="22" x="0.181818" y="338.727" width="48.1818" height="6.36364"/>
@@ -448,21 +456,107 @@
   <object id="461" x="99.4375" y="176.125" width="17.625" height="18.625"/>
   <object id="468" x="158.333" y="0" width="294.667" height="9.66667"/>
   <object id="469" x="0.333333" y="247.333" width="15.6667" height="107.667"/>
+  <object id="486" x="128" y="336" width="16"/>
+  <object id="489" x="128.182" y="330.727" width="32" height="24.1818"/>
+  <object id="490" x="208" y="330" width="48.1818" height="25.6364"/>
+  <object id="491" x="128.182" y="336" width="154.182" height="8.18182"/>
+  <object id="492" x="121.818" y="335.818" width="28" height="8.36364"/>
  </objectgroup>
  <objectgroup name="transiciones1">
   <object id="466" x="183.375" y="256.75" width="17.375" height="10.25"/>
  </objectgroup>
  <objectgroup name="blue">
-  <object id="445" x="336" y="238.667" width="16" height="16"/>
-  <object id="446" x="336" y="144" width="16" height="16"/>
-  <object id="447" x="256" y="64" width="16" height="16"/>
-  <object id="448" x="384" y="384" width="16" height="16"/>
-  <object id="450" x="160" y="400" width="16" height="16"/>
-  <object id="451" x="352" y="32" width="16" height="16"/>
-  <object id="471" x="177" y="295" width="19.6667" height="14.6667"/>
-  <object id="472" x="126.667" y="292.333" width="16.6667" height="13"/>
-  <object id="473" x="85" y="285.667" width="14.6667" height="19.3333"/>
-  <object id="474" x="119.333" y="267" width="15" height="10"/>
+  <object id="479" gid="1281" x="336" y="288" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="482" gid="1281" x="336" y="288" width="22" height="33">
+   <properties>
+    <property name="blue" value=""/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="484" gid="1281" x="288" y="128" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="485" gid="1281" x="80" y="320" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="493" gid="1281" x="241" y="427" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="494" gid="1281" x="380.5" y="399" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="495" gid="1281" x="154.5" y="92.5" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="496" gid="1281" x="368" y="39.5" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="497" gid="1281" x="220.5" y="494" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="498" gid="1281" x="324.5" y="371.5" width="22" height="33"/>
+  <object id="499" gid="1281" x="148.5" y="418.5" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="500" gid="1281" x="211" y="174.5" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="501" gid="1281" x="138.5" y="169" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="502" gid="1281" x="251.5" y="242" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="503" gid="1281" x="340" y="184" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="504" gid="1281" x="250" y="55.5" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="transiciones2">
   <object id="470" x="0.375" y="383.625" width="11.75" height="55.625"/>

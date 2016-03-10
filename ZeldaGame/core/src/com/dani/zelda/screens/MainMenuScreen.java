@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Timer;
 import com.dani.zelda.GameMain;
 import com.dani.zelda.managers.ResourceManager;
 import com.dani.zelda.managers.SpriteManager;
@@ -43,9 +44,6 @@ public class MainMenuScreen implements Screen
         table.setFillParent(true);
         table.center();
 
-        //TODO LOAD AN IMAGE
-        //Label title = new Label("")
-
         TextButton playButton = new TextButton("PLAY NEW GAME", game.getSkin());
         //playButton.setColor(Color.BLUE);
         playButton.addListener(new ClickListener()
@@ -54,15 +52,24 @@ public class MainMenuScreen implements Screen
             {
                 ResourceManager.stopTitleMusic();
                 dispose();
-                game.setScreen(new GameScreen(game, FIRSTX, FIRSTY));
+                //TODO LANZAR UNA PANTALLA DE INSTRUCCIONES
+                game.setScreen(new InfoScreen(game));
+                Timer.schedule(new Timer.Task() {
+                    @Override
+                    public void run() {
+                        ResourceManager.stopTitleMusic();
+                        game.setScreen(new GameScreen(game, FIRSTX, FIRSTY));
+                    }
+                }, 4);
             }
         });
         TextButton configButton = new TextButton("CONFIGURATION", game.getSkin());
         //configButton.setColor(Color.BLUE);
         configButton.addListener(new ClickListener() {
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                ResourceManager.stopTitleMusic();
                 dispose();
-                //TODO LOAD NEW SCREEN WHERE CONFIGURATE THINGS LIKE THE SOUND
+                game.setScreen(new ConfigScreen(game));
 
             }
         });
@@ -94,7 +101,6 @@ public class MainMenuScreen implements Screen
 
         stage.act();
 
-        //TODO PROBLEM WITH THE COLOR
         stage.getBatch().begin();
         stage.getBatch().draw(texture, 1, 1, SCREEN_WIDTH, SCREEN_HEIGHT);
         stage.getBatch().end();

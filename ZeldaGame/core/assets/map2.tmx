@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="16" tileheight="16" nextobjectid="443">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="16" tileheight="16" nextobjectid="473">
  <tileset firstgid="1" name="7618" tilewidth="16" tileheight="16" tilecount="1280" columns="40">
   <image source="resources/tiles/7618.png" width="649" height="512"/>
+ </tileset>
+ <tileset firstgid="1281" name="enemy1_down_1" tilewidth="22" tileheight="33" tilecount="1" columns="1">
+  <image source="enemy1_down_1.png" width="22" height="33"/>
+ </tileset>
+ <tileset firstgid="1282" name="enemy2_down_1" tilewidth="25" tileheight="30" tilecount="1" columns="1">
+  <image source="enemy2_down_1.png" width="25" height="30"/>
  </tileset>
  <layer name="base" width="32" height="32">
   <data encoding="csv">
@@ -443,5 +449,110 @@
  <objectgroup name="transiciones2">
   <object id="438" x="116.5" y="0" width="59.8125" height="7.875"/>
  </objectgroup>
- <objectgroup name="blue"/>
+ <objectgroup name="blue">
+  <object id="444" gid="1281" x="313.667" y="380.667" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="445" gid="1281" x="407.667" y="212.667" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="448" gid="1281" x="127.667" y="217.333" width="22" height="33">
+   <properties>
+    <property name="blue" value="blue"/>
+    <property name="velocidad" value="10"/>
+   </properties>
+  </object>
+  <object id="452" gid="1282" x="264" y="433.5" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="yellow">
+  <object id="449" gid="1282" x="319.333" y="282.333" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="450" gid="1282" x="72.6667" y="417.667" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="462" gid="1282" x="430.5" y="406.5" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="463" gid="1282" x="161.5" y="440.5" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="464" gid="1282" x="126" y="490" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="465" gid="1282" x="173" y="490.5" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="466" gid="1282" x="81" y="287" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="467" gid="1282" x="374.5" y="149.5" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="468" gid="1282" x="458" y="226" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="469" gid="1282" x="411" y="177" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="470" gid="1282" x="181.5" y="72.5" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="471" gid="1282" x="132.5" y="125.5" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+  <object id="472" gid="1282" x="109.5" y="50" width="25" height="30">
+   <properties>
+    <property name="velocidad" value="10"/>
+    <property name="yellow" value="yellow"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

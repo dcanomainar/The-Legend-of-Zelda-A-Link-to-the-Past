@@ -14,6 +14,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.dani.zelda.characters.BlueEnemy;
 import com.dani.zelda.characters.Enemy;
+import com.dani.zelda.characters.RedEnemy;
+import com.dani.zelda.characters.YellowEnemy;
 import org.w3c.dom.css.Rect;
 
 import java.util.ArrayList;
@@ -40,6 +42,8 @@ public class LevelManager
     MapLayer transicionesLayer2;
     MapLayer transicionesLayer3;
     MapLayer blueEnemyLayer;
+    MapLayer yellowEnemyLayer;
+    MapLayer redEnemyLayer;
     MapLayer endGameLayer;
 
     OrthogonalTiledMapRenderer mapRenderer;
@@ -88,8 +92,9 @@ public class LevelManager
             transiciones2.clear();
             loadTransiciones2();
 
-            spriteManager.blueEnemies.clear();
-            loadEnemyBlue();
+            //spriteManager.blueEnemies.clear();
+            //loadEnemyBlue();
+            loadEnemies();
         }
         else if(currentLevel == 2)
         {
@@ -98,6 +103,7 @@ public class LevelManager
             transicionesLayer2 = map.getLayers().get("transiciones2");
 
             blueEnemyLayer = map.getLayers().get("blue");
+            yellowEnemyLayer = map.getLayers().get("yellow");
 
             mapRenderer = new OrthogonalTiledMapRenderer(map);
 
@@ -107,8 +113,10 @@ public class LevelManager
             transiciones2.clear();
             loadTransiciones2();
 
-            spriteManager.blueEnemies.clear();
-            loadEnemyBlue();
+            //spriteManager.blueEnemies.clear();
+            //loadEnemyBlue();
+            //loadEnemyYellow();
+            loadEnemies();
         }
         else if(currentLevel == 3)
         {
@@ -119,6 +127,7 @@ public class LevelManager
             endGameLayer = map.getLayers().get("final");
 
             blueEnemyLayer = map.getLayers().get("blue");
+            yellowEnemyLayer = map.getLayers().get("yellow");
 
             mapRenderer = new OrthogonalTiledMapRenderer(map);
 
@@ -133,8 +142,38 @@ public class LevelManager
 
             loadEndGame();
 
-            spriteManager.blueEnemies.clear();
-            loadEnemyBlue();
+            //spriteManager.listaEnemigos.clear();
+            //loadEnemyBlue();
+            //loadEnemyYellow();
+            loadEnemies();
+        }
+        else if(currentLevel == 4)
+        {
+            collisionLayer = map.getLayers().get("objects");
+            transicionesLayer1 = map.getLayers().get("transiciones1");
+            transicionesLayer2 = map.getLayers().get("transiciones2");
+            transicionesLayer3 = map.getLayers().get("transiciones3");
+            endGameLayer = map.getLayers().get("final");
+
+            redEnemyLayer = map.getLayers().get("red");
+
+            mapRenderer = new OrthogonalTiledMapRenderer(map);
+
+            transiciones1.clear();
+            loadTransiciones1();
+
+            transiciones2.clear();
+            loadTransiciones2();
+
+            transiciones3.clear();
+            loadTransiciones3();
+
+            loadEndGame();
+
+            //spriteManager.listaEnemigos.clear();
+            //loadEnemyBlue();
+            //loadEnemyYellow();
+            loadEnemies();
         }
 
         terreno.clear();
@@ -228,6 +267,7 @@ public class LevelManager
 
     private void loadEnemyBlue()
     {
+        /*
         for (MapObject ro : blueEnemyLayer.getObjects())
         {
             if (ro instanceof TextureMapObject)
@@ -238,10 +278,31 @@ public class LevelManager
             if (ro instanceof RectangleMapObject)
             {
                 Rectangle rectangle = ((RectangleMapObject)ro).getRectangle();
-                BlueEnemy blueEnemy = new BlueEnemy(rectangle.x, rectangle.y, "blue", 0.1f);
-                spriteManager.blueEnemies.add(blueEnemy);
+                BlueEnemy blueEnemy = new BlueEnemy(rectangle.x, rectangle.y, "enemy1", 0.1f);
+                spriteManager.listaEnemigos.add(blueEnemy);
             }
         }
+        */
+    }
+
+    private void loadEnemyYellow()
+    {
+        /*
+        for (MapObject ro : yellowEnemyLayer.getObjects())
+        {
+            if (ro instanceof TextureMapObject)
+            {
+                continue;
+            }
+
+            if (ro instanceof RectangleMapObject)
+            {
+                Rectangle rectangle = ((RectangleMapObject)ro).getRectangle();
+                YellowEnemy yellowEnemy = new YellowEnemy(rectangle.x, rectangle.y, "enemy2", 1, 5);
+                spriteManager.listaEnemigos.add(yellowEnemy);
+            }
+        }
+        */
     }
 
     private void loadTerreno()
@@ -271,7 +332,7 @@ public class LevelManager
 
     public void restarCurrentLevel()
     {
-
+        currentLevel = 0;
     }
 
     public void passNextLevel()
@@ -290,37 +351,60 @@ public class LevelManager
         return this.currentLevel;
     }
 
-    /*
+
     public void loadEnemies()
     {
         Enemy enemy = null;
         int speed = 0;
-        // Carga los objetos "enemigo" del TiledMap
-        for (MapObject object : map.getLayers().get("cosas").getObjects()) {
-            if (object instanceof TextureMapObject) {
+        for (MapObject object : map.getLayers().get("blue").getObjects())
+        {
+            if (object instanceof TextureMapObject)
+            {
                 TextureMapObject rectangleObject = (TextureMapObject) object;
-                if (rectangleObject.getProperties().containsKey("bicho")) {
-                    String enemyType = (String) rectangleObject.getProperties().get("bicho");
-                    switch (enemyType) {
-                        case "verde":
-                            speed = Integer.parseInt((String) rectangleObject.getProperties().get("velocidad"));
-                            enemy = new GreenEnemy(rectangleObject.getX(),
-                                    rectangleObject.getY(), "green_bubble", speed);
-                            break;
-                        case "amarillo":
-                            speed = Integer.parseInt((String) rectangleObject.getProperties().get("velocidad"));
-                            int offset = Integer.parseInt((String) rectangleObject.getProperties().get("desplazamiento"));
-                            enemy = new YellowEnemy(rectangleObject.getX(),
-                                    rectangleObject.getY(), "yellow_bubble", speed, offset);
-                        default:
-                            break;
-                    }
-                    spriteManager.enemies.add(enemy);
+                if (rectangleObject.getProperties().containsKey("blue"))
+                {
+                    System.out.println("ENEMIGO");
+                    float velocidad = Float.parseFloat((String)rectangleObject.getProperties().get("velocidad"));
+                    enemy = new BlueEnemy(rectangleObject.getX(),
+                            rectangleObject.getY(), "enemy1",velocidad);
+                    spriteManager.listaEnemigos.add(enemy);
                 }
             }
         }
+        if(currentLevel > 1)
+        {
+            for (MapObject object : map.getLayers().get("yellow").getObjects())
+            {
+                if (object instanceof TextureMapObject)
+                {
+                    TextureMapObject rectangleObject = (TextureMapObject) object;
+                    if (rectangleObject.getProperties().containsKey("yellow"))
+                    {
+                        System.out.println("ENEMIGO 2");
+                        float velocidad = Float.parseFloat((String) rectangleObject.getProperties().get("velocidad"));
+                        enemy = new YellowEnemy(rectangleObject.getX(), rectangleObject.getY(), "enemy2", (int)velocidad, 20);
+                        spriteManager.listaEnemigos.add(enemy);
+                    }
+                }
+            }
+        }
+        if(currentLevel >= 3)
+            for (MapObject object : map.getLayers().get("red").getObjects())
+            {
+                if (object instanceof TextureMapObject)
+                {
+                    TextureMapObject rectangleObject = (TextureMapObject) object;
+                    if (rectangleObject.getProperties().containsKey("red"))
+                    {
+                        System.out.println("ENEMIGO 3");
+                        float velocidad = Float.parseFloat((String) rectangleObject.getProperties().get("velocidad"));
+                        enemy = new RedEnemy(rectangleObject.getX(), rectangleObject.getY(), "enemy3", velocidad);
+                        spriteManager.listaEnemigos.add(enemy);
+                    }
+                }
+            }
     }
-    */
+
 
     public void loadItems()
     {
